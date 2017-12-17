@@ -15,7 +15,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<style>
-			.map {	
+			.map {
 			height: 100%;
 			width: 50%;
 			text-align: center;
@@ -36,18 +36,21 @@
 					</header>
 
 				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="Login.html">Log In</a></li>
-								<li><a href="#">Sign Up</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
-					</nav>
-					
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="Map.html">Radio Search</a></li>
+							<li><a href="Tips.html">Tips</a></li>
+							<li><a href="radioSearch.html">Map</a></li>
+							<li><a href="emergency.html">Emergency</a></li>
+							<li><a href="#">Sign Out</a></li>
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
 					<!-- Banner -->
 					<section id="banner">
 						<div class="inner">
@@ -58,7 +61,7 @@
 
 				<!-- Wrapper -->
 					<section id="wrapper" style="text-align: center">
-					
+
 					<h1>Emergency</h1>
 			<h2>Do you have...</h2>
 			<form method="post" action="#">
@@ -76,7 +79,7 @@
 			</form>
 			<p id="waterText"></p>
 			<div class="map" id="map1"></div>
-			
+
 			<form>
 				<label>Food?</label>
 				<div class="row uniform">
@@ -93,7 +96,7 @@
 			</form>
 			<p id="foodText"></p>
 			<div class="map" id="map2" style="height: 100%;"></div>
-			
+
 			<form>
 				<label>Shelter?</label>
 				<div class="row uniform">
@@ -109,7 +112,7 @@
 			</form>
 			<p id="shelterText"></p>
 			<div class="map" id="map3"></div>
-			
+
 			<form>
 				<label>Wifi?</label>
 				<div class="row uniform">
@@ -125,11 +128,11 @@
 			</form>
 			<p id="wifiText" style="padding-left: 1em;"></p>
 			<div class="map" id="map4"></div>
-					
-					</section>
-					
 
-				
+					</section>
+
+
+
 				<!-- Scripts -->
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
@@ -137,7 +140,7 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-			
+
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAclhFTo3TH7DKzYboQW0-jEZKLak1QQIw&libraries=places&callback=initMap" async defer></script>
 		<script>
 			var map1;
@@ -148,15 +151,15 @@
 			var infowindow2;
 			var infowindow3;
 			var infowindow4;
-		
+
 			function initMap() {
 				var pyrmont = {lat: 18.200178, lng: -66.664513};
-				
+
 				map1 = new google.maps.Map(document.getElementById('map1'), {
 				  center: pyrmont,
 				  zoom: 8
 				});
-				
+
 				infowindow = new google.maps.InfoWindow();
 				var service1 = new google.maps.places.PlacesService(map1);
 				service1.nearbySearch({
@@ -164,12 +167,12 @@
 				  radius: 50000,
 				  type: ['shelter']
 				}, callback1);
-				
+
 				map2 = new google.maps.Map(document.getElementById('map2'), {
 				  center: pyrmont,
 				  zoom: 8
 				});
-				
+
 				infowindow = new google.maps.InfoWindow();
 				var service2 = new google.maps.places.PlacesService(map2);
 				service2.nearbySearch({
@@ -177,12 +180,12 @@
 				  radius: 50000,
 				  type: ['shelter']
 				}, callback2);
-				
+
 				map3 = new google.maps.Map(document.getElementById('map3'), {
 				  center: pyrmont,
 				  zoom: 8
 				});
-				
+
 				infowindow = new google.maps.InfoWindow();
 				var service3 = new google.maps.places.PlacesService(map3);
 				service3.nearbySearch({
@@ -190,12 +193,12 @@
 				  radius: 50000,
 				  type: ['shelter']
 				}, callback3);
-				
+
 				map4 = new google.maps.Map(document.getElementById('map4'), {
 				  center: pyrmont,
 				  zoom: 8
 				});
-				
+
 				infowindow = new google.maps.InfoWindow();
 				var service4 = new google.maps.places.PlacesService(map4);
 				service4.nearbySearch({
@@ -204,7 +207,7 @@
 				  type: ['wifi']
 				}, callback4);
 			}
-			
+
 			function callback1(results, status) {
 				if (status === google.maps.places.PlacesServiceStatus.OK) {
 				  for (var i = 0; i < results.length; i++) {
@@ -212,7 +215,7 @@
 				  }
 				}
 			  }
-			  
+
 			  function callback2(results, status) {
 				if (status === google.maps.places.PlacesServiceStatus.OK) {
 				  for (var i = 0; i < results.length; i++) {
@@ -220,7 +223,7 @@
 				  }
 				}
 			  }
-			  
+
 			  function callback3(results, status) {
 				if (status === google.maps.places.PlacesServiceStatus.OK) {
 				  for (var i = 0; i < results.length; i++) {
@@ -228,7 +231,7 @@
 				  }
 				}
 			  }
-			  
+
 			  function callback4(results, status) {
 				if (status === google.maps.places.PlacesServiceStatus.OK) {
 				  for (var i = 0; i < results.length; i++) {
@@ -236,7 +239,7 @@
 				  }
 				}
 			  }
-			  
+
 			function createMarker1(place) {
 				var placeLoc = place.geometry.location;
 				var marker = new google.maps.Marker({
@@ -249,7 +252,7 @@
 				  infowindow.open(map1, this);
 				});
 			  }
-			  
+
 			  function createMarker2(place) {
 				var placeLoc = place.geometry.location;
 				var marker = new google.maps.Marker({
@@ -262,7 +265,7 @@
 				  infowindow.open(map2, this);
 				});
 			  }
-			  
+
 			  function createMarker3(place) {
 				var placeLoc = place.geometry.location;
 				var marker = new google.maps.Marker({
@@ -275,7 +278,7 @@
 				  infowindow.open(map3, this);
 				});
 			  }
-			  
+
 			  function createMarker4(place) {
 				var placeLoc = place.geometry.location;
 				var marker = new google.maps.Marker({
@@ -288,7 +291,7 @@
 				  infowindow.open(map4, this);
 				});
 			  }
-		
+
 			$(function() {
 				/*$("#map1").hide();
 				$("#map2").hide();
@@ -306,37 +309,37 @@
 					$("#waterText").html("You can find water here: ");
 					//$("#map1").show();
 				});
-				
+
 				$("#foodYes").click(function() {
 					$("#foodText").html("You can find food here: ");
 					//$("#map2").show();
 				});
-				
+
 				$("#shelterYes").click(function() {
 					$("#shelterText").html("You can find shelters here: ");
 					//$("#map3").show();
 				});
-				
+
 				$("#wifiYes").click(function() {
 					$("#wifiText").html("You can find internet cafes here: ");
 					//$("#map4").show();
 				});
-				
+
 				$("#waterNo").click(function() {
 					$("#waterText").html("");
 					$("#map1").hide();
 				});
-				
+
 				$("#foodNo").click(function() {
 					$("#foodText").html("");
 					$("#map2").hide();
 				});
-			
+
 				$("#shelterNo").click(function() {
 					$("#shelterText").html("");
 					$("#map3").hide();
 				});
-				
+
 				$("#wifiNo").click(function() {
 					$("#wifiText").html("");
 					$("#map4").hide();
