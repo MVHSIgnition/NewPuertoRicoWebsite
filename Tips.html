@@ -1,1 +1,164 @@
-`
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Tips</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Ignition</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="radioSearch.html">Radio Search</a></li>
+								<li><a href="Tips.html">Tips</a></li>
+								<li><a href="Map.html">Map</a></li>
+								<li><a href="#">Sign Out</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Tips</h2>
+								<p>Personalized. Just. For. You.</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">General</h3>
+                  <p>
+                    <strong>FEMA recommends all residents and visitors in the path of a hurricane should review these tips (GENERAL):</strong></p>
+                      <ul>
+                        <li>Ensure your <a href="https://www.ready.gov/build-a-kit">emergency kit</a> is ready, and test your <a href="https://www.ready.gov/make-a-plan">family communications plan</a>.</li>
+                        <li>Plan to stay in a shelter, and not in a home damaged by the previous storm. Let friends, family or coworkers know where you are taking shelter.</li>
+                        <li>Stay vigilant and continue to monitor local radio or TV stations for local emergency management officials’ guidance, and for updated weather and emergency information.</li>
+                        <li>The <a href="https://www.fema.gov/mobile-app">FEMA App</a> (available in English and Spanish) provides National Weather Service alerts and directions to open shelters. Check this app every half hour to save your cell phone battery.</li>
+                        <li>Turn on your TV/radio, or check your city/county website every half hour to keep up with the latest weather updates.</li>
+                        <li>Only use social media to check in with family, friends and/or co-workers. Do not use social media to record/photograph the storm to conserve your phone’s battery.</li>
+                        <li>Close storm shutters, and stay away from the windows, as flying glass from the windows could injure you.</li>
+                        <li>Turn your refrigerator or freezer to the coldest setting and only open when necessary. If you lose power, this will ensure the food lasts longer.</li>
+                        <li>Remember, never run a generator inside and keep it away from windows, doors, and vents.</li>
+                        <li>If using candles, please use caution. If possible, use flashlights instead. If you must use candles, do not burn them on or near anything that can catch fire.</li>
+                        <li>Businesses of all sizes are encouraged to follow directions of local officials and to share safety messaging with employees in order to reduce risk.</li>
+                        <li>Remember, your life and family safety is key. Do not risk your life to attempt to save household possessions.</li>
+                      </ul>
+                  <p>
+
+									<h3 class="major">Personalized</h3>
+                  <iframe width=95% height="1250px" id="youngChildTips" frameBorder="0" class="info">
+                  </iframe>
+                  <iframe width=95% height="500px" id="pets" frameBorder="0" class="info">
+                  </iframe>
+
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+
+			</div>
+      <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyDAiGrwP6o-yQK-Ug8vqykJQRgwfF6Zogk",
+          authDomain: "puerto-rico-82a67.firebaseapp.com",
+          databaseURL: "https://puerto-rico-82a67.firebaseio.com",
+          projectId: "puerto-rico-82a67",
+          storageBucket: "",
+          messagingSenderId: "257818225257"
+        };
+        firebase.initializeApp(config);
+      </script>
+
+      <script>
+      var famNum;
+      var pets;
+      var youngChild;
+
+
+        var signOut = document.getElementById("signOutButton");
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            var text = document.querySelector('h1');
+            text.innerHTML = "Logged In " + user.email;
+
+            console.log(user);
+
+        var id = user.uid;
+        return firebase.database().ref("users/" + id).once("value").then(function(snapshot) {
+          if (snapshot.val()) {
+            famNum = snapshot.val().famNum;
+            pets = snapshot.val().pets;
+            youngChild = snapshot.val().youngChild;
+
+            console.log("FAM:"+famNum);
+            console.log("PETS:"+pets);
+            console.log("CHILD:"+youngChild);
+
+            if(youngChild){
+              document.getElementById("youngChildTips").src = 'responseChildTips.html';
+
+            }
+            if(pets){
+              document.getElementById("pets").src = 'responsePetTips.html';
+
+            }
+          }
+        });
+          }
+        });
+
+        signOut.onclick = function() {
+          firebase.auth().signOut().then(function() {
+            var text = document.querySelector('h1');
+            text.innerHTML = "Sign Out Successful";
+            location.reload(); //refresh
+          }).catch(function(error) {
+            var text = document.querySelector('h1');
+            s.innerHTML = "Sign Out Not Successful";
+          });
+        }
+      </script>
+		<!-- Scripts -->
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
