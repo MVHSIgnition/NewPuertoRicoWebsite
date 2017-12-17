@@ -53,66 +53,57 @@
 								<div class="inner">
 
 									<section>
-										<h3 class="major">Form</h3>
-										<form method="post" action="#">
+										<h3 class="major">Login</h3>
 											<div class="row uniform">
 												<div class="6u 12u$(xsmall)">
-													<label for="demo-name">Name</label>
-													<input type="text" name="demo-name" id="demo-name" value="" />
+													<label for="demo-email">Email</label>
+													<input type="email" id="loginEmail" placeholder= "Email"value="" />
 												</div>
 												<div class="6u$ 12u$(xsmall)">
-													<label for="demo-email">Email</label>
-													<input type="email" name="demo-email" id="demo-email" value="" />
-												</div>
-												<div class="12u$">
-													<label for="demo-category">Category</label>
-													<div class="select-wrapper">
-														<select name="demo-category" id="demo-category">
-															<option value="">-</option>
-															<option value="1">Manufacturing</option>
-															<option value="1">Shipping</option>
-															<option value="1">Administration</option>
-															<option value="1">Human Resources</option>
-														</select>
-													</div>
-												</div>
-												<div class="4u 12u$(small)">
-													<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-													<label for="demo-priority-low">Low Priority</label>
-												</div>
-												<div class="4u 12u$(small)">
-													<input type="radio" id="demo-priority-normal" name="demo-priority">
-													<label for="demo-priority-normal">Normal Priority</label>
-												</div>
-												<div class="4u$ 12u$(small)">
-													<input type="radio" id="demo-priority-high" name="demo-priority">
-													<label for="demo-priority-high">High Priority</label>
-												</div>
-												<div class="6u 12u$(small)">
-													<input type="checkbox" id="demo-copy" name="demo-copy">
-													<label for="demo-copy">Email me a copy</label>
-												</div>
-												<div class="6u$ 12u$(small)">
-													<input type="checkbox" id="demo-human" name="demo-human" checked>
-													<label for="demo-human">Not a robot</label>
-												</div>
-												<div class="12u$">
-													<label for="demo-message">Message</label>
-													<textarea name="demo-message" id="demo-message" rows="6"></textarea>
-												</div>
-												<div class="12u$">
-													<ul class="actions">
-														<li><input type="submit" value="Send Message" class="special" /></li>
-														<li><input type="reset" value="Reset" /></li>
-													</ul>
+													<label for="demo-password">Password</label>
+													<input type="password" name="demo-email" id="loginPassword" placeholder= "Password" value="" />
 												</div>
 											</div>
-										</form>
+											<div class="12u$">
+												<ul class="actions">
+													<button id="login"><input type="submit" value="Send Message" class="special" /></button>
+												</ul>
+											</div>
 									</section>
 
 			</div>
 
 		<!-- Scripts -->
+			<script src = "information.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+			<script>
+				var config = {
+					apiKey: "AIzaSyDAiGrwP6o-yQK-Ug8vqykJQRgwfF6Zogk",
+					authDomain: "puerto-rico-82a67.firebaseapp.com",
+					databaseURL: "https://puerto-rico-82a67.firebaseio.com",
+					projectId: "puerto-rico-82a67",
+					storageBucket: "",
+					messagingSenderId: "257818225257"
+				};
+				firebase.initializeApp(config);
+			</script>
+
+			<script>
+				var loginButton = document.getElementById("login");
+				var lEmail = document.getElementById("loginEmail");
+				var lPassword = document.getElementById("loginPassword");
+				loginButton.onclick = function() {
+					firebase.auth().signInWithEmailAndPassword(lEmail.value, lPassword.value).catch(function(error){
+						var errorCode = error.code;
+						var errorMessage = error.message;
+						alert(errorMessage);
+						//TODO: ADD ERROR PROCESSING
+					});
+				}
+				firebase.auth().onAuthStateChanged(function(user) {
+					if (user) window.location.replace("tips.html");
+				});
+			</script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
