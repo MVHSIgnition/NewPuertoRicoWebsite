@@ -1,0 +1,135 @@
+<html>
+	<head>
+		<title>Generic - Solid State by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+    #searchBar{
+    	text-align: center;
+    	display:inline-block;
+    	border-color: #00ccff;
+    }
+    #searchBar #q, #qBtn {
+    	height: 2em;
+    	float: left;
+    	border-style: solid;
+    	border-color: #333;
+    	font-size: 2em;
+    }
+
+    #searchBar #q {
+    	border-top-left-radius: .5em;
+    	border-bottom-left-radius: .5em;
+    	border-right: 0;
+      background-color:#000000;
+    	text-indent: .5em;
+    }
+
+    #searchBar #qBtn {
+    	background-color: #90C3D4;
+    	border-top-right-radius: .5em;
+    	border-bottom-right-radius: .5em;
+    }
+
+    #searchBar #qBtn:hover, #qBtn:focus {
+    	background-color: #67A3B8;
+    	border-top-right-radius: .5em;
+    	border-bottom-right-radius: .5em;
+    }
+
+    #searchBar #qBtn img {
+    	max-width: 80%;
+    	max-height: 80%;
+    }
+
+    #searchResults li{
+    	padding: 1em 1em;
+    }
+
+    #searchResults li:nth-child(odd) {
+    	background: #000000;
+    }
+
+    #searchResults li:nth-child(even) {
+    	background: #2f4f4f;
+    }
+
+    #searchResults {
+    	list-style-type: none;
+    	margin: 0;
+    	padding: 0;
+    }
+    </style>
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Ignition</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+          <nav id="menu">
+            <div class="inner">
+              <h2>Menu</h2>
+              <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Map.html">Radio Search</a></li>
+                <li><a href="Tips.html">Tips</a></li>
+                <li><a href="radioSearch.html">Map</a></li>
+                <li><a href="https://mvhsignition.github.io/PuertoRico/profile.html">Emergency</a></li>
+                <li><a href="#">Sign Out</a></li>
+              </ul>
+              <a href="#" class="close">Close</a>
+            </div>
+          </nav>
+          <section id="wrapper">
+            <header>
+              <div class="inner">
+                <h2>Radio Scans</h2>
+                <p>Scan the radio for the most up to date information.</p>
+              </div>
+            </header>
+            <div class="wrapper">
+              <div class="inner">
+                <h1>Search Radio Broadcasts</h1>
+                <p>Search radio transcripts of emergency broadcasts to get more information on how to best respond to the hurricane by entering a few key terms in the search bar below:</p>
+                <center>
+                  <div class = "center">
+                    <div id="searchBar">
+                      <input id="q" placeholder="Ignite!"/>
+                      <button id="qBtn"><img src="img/search.png"/></button>
+                    </div>
+                  </div>
+                </center>
+                <ul id="searchResults"></ul>
+
+            		<script src="js/jquery-3.2.1.min.js"></script>
+            		<script src="js/socket.io.js"></script>
+            		<script>
+            			$(function(){
+            				var socket = io("https://puertoricoserver.herokuapp.com/");
+
+            				$("#qBtn").click(function() {
+            					socket.emit("info request", $("#q").val());
+            				});
+
+            				socket.on("info response", function(response) {
+            					$("#searchResults").html("<h1> Results for " + response[0] + "</h1>");
+
+            					for(var i = 1; i < response.length; i++){
+            						$("#searchResults").append("<li style=\"margin-left:5-em\">" + i + ": " + response[i] + "</li>");
+            					}
+            				});
+            			});
+            		</script>
+            </body>
+        </html>
