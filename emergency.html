@@ -20,6 +20,13 @@
 			width: 50%;
 			text-align: center;
 			margin: 0 auto;
+		  }
+
+			html, body {
+				height: 100%;
+			margin: 0;
+			padding: 0;
+			text-align: center;
 			}
 		</style>
 	</head>
@@ -60,11 +67,17 @@
 					</section>
 
 				<!-- Wrapper -->
+<<<<<<< HEAD
 					<section id="wrapper" style="text-align: center">
 
+=======
+
+>>>>>>> origin/master
 					<h1>Emergency</h1>
 			<h2>Do you have...</h2>
-			<form method="post" action="#">
+
+
+			<form>
 				<label>Water?</label>
 				<div class="row uniform">
 				<div class="6u 12u$(small)">
@@ -78,25 +91,38 @@
 				</div>
 			</form>
 			<p id="waterText"></p>
+<<<<<<< HEAD
 			<div class="map" id="map1"></div>
 
+=======
+				<div class="map" id="map1"></div>
+			<br />
+			<br />
+
+>>>>>>> origin/master
 			<form>
 				<label>Food?</label>
 				<div class="row uniform">
 				<div class="6u 12u$(small)">
-					<input type="radio" id="foodYes" name="demo-priority" checked>
+					<input type="radio" id="foodYes" name="" checked>
 					<label for="foodYes">No</label>
 				</div>
 				<div class="6u 12u$(small)">
-					<input type="radio" id="foodNo" name="demo-priority">
+					<input type="radio" id="foodNo" name="">
 					<label for="foodNo">Yes</label>
 				</div>
 				</div>
-				<div id="map2" style="height: 100%;"></div>
 			</form>
 			<p id="foodText"></p>
+<<<<<<< HEAD
 			<div class="map" id="map2" style="height: 100%;"></div>
 
+=======
+			<div class="map" id="map2"></div>
+			<br />
+			<br />
+
+>>>>>>> origin/master
 			<form>
 				<label>Shelter?</label>
 				<div class="row uniform">
@@ -112,7 +138,12 @@
 			</form>
 			<p id="shelterText"></p>
 			<div class="map" id="map3"></div>
+<<<<<<< HEAD
 
+=======
+			<br />
+			<br />
+>>>>>>> origin/master
 			<form>
 				<label>Wifi?</label>
 				<div class="row uniform">
@@ -128,12 +159,17 @@
 			</form>
 			<p id="wifiText" style="padding-left: 1em;"></p>
 			<div class="map" id="map4"></div>
+<<<<<<< HEAD
 
 					</section>
+=======
+
+>>>>>>> origin/master
 
 
 
 				<!-- Scripts -->
+<<<<<<< HEAD
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -152,6 +188,11 @@
 			var infowindow3;
 			var infowindow4;
 
+=======
+			<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAclhFTo3TH7DKzYboQW0-jEZKLak1QQIw&libraries=places&callback=initMap" async defer></script>
+		<script>
+>>>>>>> origin/master
 			function initMap() {
 				var pyrmont = {lat: 18.200178, lng: -66.664513};
 
@@ -297,10 +338,7 @@
 				$("#map2").hide();
 				$("#map3").hide();
 				$("#map4").hide();*/
-				$("#map1").show();
-				$("#map2").show();
-				$("#map3").show();
-				$("#map4").show();
+
 				$("#waterText").html("You can find water here: ");
 				$("#foodText").html("You can find water here: ");
 				$("#shelterText").html("You can find water here: ");
@@ -346,3 +384,9 @@
 				});
 			});
 		</script>
+<<<<<<< HEAD
+=======
+	</body>
+</html>
+
+>>>>>>> origin/master
