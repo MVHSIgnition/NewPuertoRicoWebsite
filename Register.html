@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Login</title>
+		<title>Register</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -44,7 +44,7 @@
 					<section id="wrapper">
 						<header>
 							<div class="inner">
-								<h2>Login</h2>
+								<h2>Register</h2>
 							</div>
 						</header>
 
@@ -63,10 +63,26 @@
 													<label for="demo-password">Password</label>
 													<input type="password" name="demo-email" id="loginPassword" placeholder= "Password" value="" />
 												</div>
+                        <div class="6u 12u$(xsmall)">
+                          <input type="radio" id="petsYes" name="demo-priority" checked>
+                          <label for="demo-priority-low">I have pets</label>
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                          <input type="radio" name="demo-priority">
+                          <label for="demo-priority-normal">I don't have pets</label>
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                          <input type="radio" id="youngChildYes" name="demo-priority" checked>
+                          <label for="demo-priority-low">I have a child under 12 years old</label>
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                          <input type="radio" name="demo-priority">
+                          <label for="demo-priority-normal">I don't have a child under 12 years old</label><br><br>
+                        </div>
 											</div>
 											<div class="12u$">
 												<ul class="actions">
-													<button id="login"><input type="submit" value="Submit" class="special" /></button>
+													<button id="register"><input type="submit" value="Submit" class="special" /></button>
 												</ul>
 											</div>
 									</section>
